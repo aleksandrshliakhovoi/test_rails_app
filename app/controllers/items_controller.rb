@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # show all items in db
   def index
     @items = Item.all
-    render body: @items.map { |i| "#{i.name}:#{i.price}"}
+    #render body: @items.map { |i| "#{i.name}:#{i.price}"}
   end
 
   # create one object
@@ -26,13 +26,29 @@ class ItemsController < ApplicationController
   def new; end
 
   # show current id
-  def show; end
+  def show
+    #id is equal to id which we transmit in params in URL
+    @item = Item.where(id: params[:id]).first #we use method first that for return not an array just single element
+    if @item
+      render 'items/show'
+    else
+      render body: 'Page not found', status: 404
+    end
+  end
 
   def edit; end
 
   def update; end
 
-  def destroy; end
+  def destroy
+    item = Item.where(id: params[:id]).first.destroy
+
+    if item.destroyed?
+      redirect_to items_path
+    else
+      render json: item.errors, status: :unprocessable_entity
+    end
+  end
 
 
 
