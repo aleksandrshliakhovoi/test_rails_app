@@ -36,6 +36,9 @@ class ItemsController < ApplicationController
   end
 
   def update
+    
+    #binding.pry # debagger #check data
+    
     if @item.update(items_params)
       redirect_to item_path
     else
