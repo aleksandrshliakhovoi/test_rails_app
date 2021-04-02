@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   skip_before_action :verify_authenticity_token # skip before endpoints
   before_action :find_item, only: %i[show edit update destroy upvote]
-  before_action :admin?, only: %i[edit update new create destroy] 
+  before_action :admin?, only: %i[edit update new destroy] 
   after_action :show_info, only: %i[index]
 
   # show all items in db
@@ -23,14 +23,12 @@ class ItemsController < ApplicationController
     else
       render json: item.errors, status: :unprocessable_entity
     end
-
-    
   end
 
   def new; end
 
   def show
-   
+
   end
 
   def edit

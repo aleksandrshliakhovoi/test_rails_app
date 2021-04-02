@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # post '/items', to: 'items#create'
     # only: %i[index create] 
   resources :items do
-    get :upvote, on: :member # member is id in URL params
+    get :upvote, on: :member # member is id in URL params к единственному объекту из коллекции ИТЕМ
     get :expensive, on: :collection
   end
 end
