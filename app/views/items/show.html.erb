@@ -1,12 +1,21 @@
 <h2 style="color:red">Show item</h2><br>
 
 <h4><%= @item.name.upcase %></h4>
+<table>
+  <tr>
+    <th>item id:</th>
+    <th>Name:</th>
+    <th>Price:</th>
+    <th>Description:</th>
+  </tr>
+  <tr>
+    <th><%= @item.id %></th>
+    <th><%= @item.name %></th>
+    <th><%= @item.price %></th>
+    <th><%= urls_to_content(@item.description) %></th>
+  </tr>
+</table>
 
-<ul>
-  <li>Price: <%= @item.price %> $ </li>
-  <li>Weight: <%= @item.weight %></li>
-  <li>Description: <%= @item.description %></li>
-</ul>
 
 <br />
 <br />
