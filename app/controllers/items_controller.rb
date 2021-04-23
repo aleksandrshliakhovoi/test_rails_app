@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  layout false # doesnt require a view
+  #layout false # doesnt require a view
   # seacrh all goods in db
 
   skip_before_action :verify_authenticity_token # skip before endpoints
   before_action :find_item, only: %i[show edit update destroy upvote]
-  before_action :admin?, only: %i[edit update new destroy] 
+  before_action :admin?, only: %i[edit update new destroy]
   after_action :show_info, only: %i[index]
 
   # show all items in db
@@ -76,11 +76,6 @@ class ItemsController < ApplicationController
   def find_item
     @item = Item.where(id: params[:id]).first
     render_404 unless @item
-  end
-
-  def admin?
-    #render_403 unless params[:admin]
-    #render json: 'Access denied', status: :forbidden unless params[:admin]
   end
 
   def show_info
