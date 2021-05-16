@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
     # @items = @items.where('created_at >= ?', 1.day.ago) if params[:today]
     # @items = @items.where('votes_count >=?', params[:votes_from]) if params[:votes_from]
     # @items = @items.order(:id)
-    @items = Item.all
     #render body: @items.map { |i| "#{i.name}:#{i.price}"}
+    @items = Item.all
+    @items = @items.includes(:image)
   end
 
   # create one object
