@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
 
   skip_before_action :verify_authenticity_token # skip before endpoints
   before_action :find_item, only: %i[show edit update destroy upvote]
-  before_action :admin?, only: %i[edit update new destroy]
+  #turn on admin mod
+  #before_action :admin?, only: %i[edit update new destroy]
   after_action :show_info, only: %i[index]
 
   # show all items in db
