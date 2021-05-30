@@ -1,6 +1,20 @@
-<h2 style="color:red">Create new item</h2><br>
+<div class="col-sm-12 my-auto">
+  <h2 style="color:red">Create new item</h2><br>
 
-<%= form_tag items_path, method: :post do %>
+  <%= simple_form_for @item do |f| %>
+    <%= f.input :name, label: 'Name', input_html: {class: "form-control"} %>
+    <%= f.input :price, label: 'price', input_html: {class: "form-control"} %>
+    <%= f.input :description, label: 'description', input_html: {class: "form-control"} %>
+
+    <%=f.button :submit, class: "btn-primary"%>
+  <% end %>
+  <%= render partial: 'shared/email' %>
+</div>
+
+<%
+=begin%>
+without gem
+ <%= form_tag items_path, method: :post do %>
   <%= label_tag :name %>
   <%= text_field_tag :name %>
   <%= label_tag :price%>
@@ -8,6 +22,7 @@
   <%= label_tag :description%>
   <%= text_field_tag :description %>
   <%= submit_tag "Save", class: "btn btn-large btn-primary"%>
-<% end %>
+<% end %> 
+<%
+=end%>
 
-<%= render partial: 'shared/email' %>

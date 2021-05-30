@@ -37,7 +37,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def new; end
+  def new
+    @item = Item.new
+  end
 
   def show
 
@@ -83,7 +85,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-    params.permit(:name, :price, :real, :weight, :description) #here is params which could to save in db
+    params.require(:item).permit(:name, :price, :real, :weight, :description) #here is params which could to save in db
     #if hash transmitted with other params he doesnt gbe saved
   end
 
