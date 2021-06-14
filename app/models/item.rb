@@ -9,6 +9,9 @@ class Item < ApplicationRecord
   has_many :comments, as: :commentable
   has_one :image, as: :imageable
 
+
+  has_and_belongs_to_many :orders
+
   after_initialize {p 'initialize'} # after Item.new
   after_save       {p 'save'} # Item.create
   after_update     {p 'update'}

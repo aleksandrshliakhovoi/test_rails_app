@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'shoulda-matchers'
+require 'shoulda/matchers'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -28,6 +28,6 @@ end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
-    with.library :rails 
-  end 
+    with.library :rails
+  end
 end
