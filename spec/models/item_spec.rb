@@ -29,16 +29,18 @@ RSpec.describe Item, type: :model do
   it { should have_one :image }
 
 
-  it 'calculate the price' do
-    item1 = Item.new(price: 10)
-    item2 = Item.new(price: 20)
-
-    order = Order.new
-    order.items << item1
-    order.items << item2
-
-    order.calculate_total
-
-    expect(order.total).to be 30.0
+  context "calculate the price" do
+    let!(:item_1) { create :item, price: 10 }
+    let!(:item_2) { create :item, price: 20 }
+    let!(:order) { create :order }
+    it 'calculate the price' do
+      # item1 = Item.new(price: 10)
+      # item2 = Item.new(price: 20)
+      order = Order.new
+      order.items << item_1
+      order.items << item_2
+  
+      expect(order.calculate_total).to be 30.0
+    end
   end
 end

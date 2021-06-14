@@ -14,15 +14,15 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   config.use_transactional_fixtures = true
-
-
   config.infer_spec_type_from_file_location!
-
-
   config.filter_rails_from_backtrace!
-
+  # turn on factory bot
+  config.include FactoryBot::Syntax::Methods
+  # before fabrics
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
 end
 
 Shoulda::Matchers.configure do |config|
