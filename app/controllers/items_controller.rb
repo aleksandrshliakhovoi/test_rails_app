@@ -17,9 +17,9 @@ class ItemsController < ApplicationController
     # @items = @items.order(:id)
     #render body: @items.map { |i| "#{i.name}:#{i.price}"}
     #@items = Item.all.order('votes_count DESC', 'price').limit(2)
-    @items = Item.all.order :id
+    @items = Item.all.order(:id).includes(:image)
     #exclude multiple queries to db
-    @items = @items.includes(:image)
+    #@items = @items.includes(:image)
   end
 
   # create one object
