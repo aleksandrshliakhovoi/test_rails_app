@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.where(id: params[:id]).first #!!!
     flash[:success] = 'Flawless victory'
     #binding.pry # debagger #check data
     
